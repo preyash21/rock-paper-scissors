@@ -1,3 +1,6 @@
+userScore = 0
+computerScore = 0
+
 function getComputerChoice(computerGuess){
 
   function getRandomInt(min, max) {
@@ -7,15 +10,44 @@ function getComputerChoice(computerGuess){
   var computerResponse = getRandomInt(1, 3);
 
   if (computerResponse==1){
-    computerGuess = "Rock";
+    computerChoice = "Rock";
   } else if (computerResponse==2){
-    computerGuess = "Paper";
+    computerChoice = "Paper";
   } else {
-    computerGuess = "Scissors";
+    computerChoice = "Scissor";
   }
 
-  return computerGuess;
+  return computerChoice;
 
 }
 
-console.log(getComputerChoice())
+while (userScore!=5 && computerScore!=5){
+
+  userInput = prompt("Enter your choice:")
+  
+  computerGuess=getComputerChoice();
+
+  if (userInput=="Paper" && computerGuess=="Rock"){
+    console.log("You Won!! Computer guessed: " + computerGuess)
+    userScore++
+  } else if(userInput=="Scissor" && computerGuess=="Paper"){
+    console.log("You Won!! Computer guessed: " + computerGuess)
+    userScore++
+  } else if(userInput=="Rock" && computerGuess=="Scissor"){
+    console.log("You Won!! Computer guessed: " + computerGuess)
+    userScore++
+  } else if(userInput==computerGuess){
+    console.log("It's a tie! Computer also guessed: " + computerGuess)
+  } else {
+    console.log("You Lost :( Computer guessed: " + computerGuess)
+    computerScore++
+  }
+
+  console.log("Your Score: " + userScore + "Computer Score: "+computerScore)
+}
+
+if(userScore==5){
+  console.log("CONGRATULATIONS!! YOU BEAT THE COMPUTER :D")
+} else {
+  console.log("TOUGH LUCK!! YOU LOST TO THE COMPUTER :D")
+}
